@@ -64,6 +64,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>Floodgate</id>
+            <url>https://repo.nukkitx.com/maven-snapshots/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -78,6 +82,11 @@
             <artifactId>api</artifactId>
             <version>5.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.geysermc</groupId>
+            <artifactId>floodgate-bukkit</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

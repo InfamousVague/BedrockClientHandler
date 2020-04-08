@@ -15,9 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.geysermc.floodgate.FloodgateAPI;
 
 public final class BedrockHandler extends JavaPlugin implements Listener {
-    // TODO: instead depend on
     String pluginPrefix = this.getConfig().getString("plugin-prefix");
-    FloodgateAPI floodgateAPI = new FloodgateAPI();
 
     @Override
     public void onEnable() {
@@ -37,19 +35,17 @@ public final class BedrockHandler extends JavaPlugin implements Listener {
         String bedrockPrefix = this.getConfig().getString("bedrock-prefix");
 
         Player player = event.getPlayer();
-        String displayName = player.getDisplayName();
 
-        if (floodgateAPI.isBedrockPlayer(player.getUniqueId())) {
+        if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
             getServer().getConsoleSender().sendMessage(
                     ChatColor.GREEN + "["+ pluginPrefix +"]: " + ChatColor.GRAY + "Bedrock client connected: " + player.getUniqueId());
 
             // LuckPerms Handler
             notifyUser(player);
             setLuckPermsGroup(player, bedrockGroupName);
+            assert bedrockPrefix != null;
             cleanUser(player, bedrockPrefix);
         }
-        // TODO Add Tebex.io hook to remove username prefix and apply packages correctly
-
     }
 
     // Remove prefixes, and other cleanup tasks
