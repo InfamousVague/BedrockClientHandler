@@ -12,9 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.geysermc.floodgate.FloodgateAPI;
 
 public final class BedrockHandler extends JavaPlugin implements Listener {
+    // TODO: instead depend on
     String pluginPrefix = this.getConfig().getString("plugin-prefix");
+    FloodgateAPI floodgateAPI = new FloodgateAPI();
 
     @Override
     public void onEnable() {
@@ -36,8 +39,7 @@ public final class BedrockHandler extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         String displayName = player.getDisplayName();
 
-        assert bedrockPrefix != null;
-        if (displayName.contains(bedrockPrefix)) {
+        if (floodgateAPI.isBedrockPlayer(player.getUniqueId())) {
             getServer().getConsoleSender().sendMessage(
                     ChatColor.GREEN + "["+ pluginPrefix +"]: " + ChatColor.GRAY + "Bedrock client connected: " + player.getUniqueId());
 
