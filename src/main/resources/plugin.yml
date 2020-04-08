@@ -5,3 +5,4 @@ api-version: 1.13
 authors: [RetroPronghorn]
 description: Take action when a bedrock client joins the server
 website: https://github.com/retropronghorn
+softdepend: [LuckPerms]

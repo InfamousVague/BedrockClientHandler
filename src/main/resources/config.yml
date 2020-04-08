@@ -1,0 +1,9 @@
+# BedrockHandler Config
+luckperms-groupname: bedrock
+bedrock-prefix: *
+plugin-prefix: BedrockHandler
+# Setting to true will grant bedrock users permissions to this node,
+# while setting to false will deny them these permissions.
+# This is helpful for hiding things like on screen displays for smaller screens.
+perms:
+  scoreboard.default: false
